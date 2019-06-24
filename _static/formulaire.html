@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ajouter un collaborateur</title>
+
+    <link rel="stylesheet" async href="//unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="usercard.css">
+    <link rel="stylesheet" href="userform.css">
+</head>
+
+<body>
+
+    <main id="app">
+
+        <nav class="navbar">
+            <div class="container">
+                <a href="#">Accueil</a>
+                <a href="#">Liste des collaborateurs</a>
+                <a href="#">Ajouter un collaborateur</a>
+            </div>
+        </nav>
+
+        <div class="container centered">
+
+            <h1>Ajouter un collaborateur</h1>
+            <hr>
+
+            <form class="userform">
+
+                <div class="form-group">
+                    <input type="radio" name="gender" id="male" value="male">
+                    <label for="male">Homme</label>
+
+                    <input type="radio" name="gender" id="female" value="female">
+                    <label for="female">Femme</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastname">Nom :</label>
+                    <input type="text" id="lastname" placeholder="DOE">
+                </div>
+
+                <div class="form-group">
+                    <label for="firstname">Prénom :</label>
+                    <input type="text" id="firstname" placeholder="John">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="text" id="email" placeholder="john.doe@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Téléphone :</label>
+                    <input type="text" id="phone" placeholder="06-78-90-12-34">
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">Date de naissance :</label>
+                    <input type="date" id="birthdate" placeholder="04/11/1988">
+                </div>
+
+                <div class="form-group">
+                    <label for="city">Ville :</label>
+                    <input type="text" id="city" placeholder="Paris">
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Pays :</label>
+                    <input type="text" id="country" placeholder="France">
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">Photo :</label>
+                    <input type="url" id="photo" placeholder="http://">
+                </div>
+
+                <div class="actions">
+                    <button type="submit" class="btn">Envoyer</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

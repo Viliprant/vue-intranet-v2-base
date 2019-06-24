@@ -1,0 +1,35 @@
+.userform {
+    margin: 2em 0;
+  }
+
+  .userform .form-group {
+    margin-bottom: 1.2em;
+  }
+
+  .userform label {
+    display: inline-block;
+    vertical-align: middle;
+    min-width: 150px;
+    text-align: right;
+
+  }
+  .userform input[type='radio'] + label {
+    min-width: 0;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .userform input:not([type=radio]) {
+    min-width: 200px;
+    vertical-align: middle;
+  }
+
+  .userform input ~ span {
+    display: block;
+    font-size: 0.8em;
+    color: red;
+  }
+
+  .userform .input-error {
+    border: 1px solid red;
+  }

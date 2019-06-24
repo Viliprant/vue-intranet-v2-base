@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Accueil</title>
+
+    <link rel="stylesheet" async href="//unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="usercard.css">
+</head>
+
+<body>
+
+    <main id="app">
+
+        <nav class="navbar">
+            <div class="container">
+                <a href="#">Accueil</a>
+                <a href="#">Liste des collaborateurs</a>
+                <a href="#">Ajouter un collaborateur</a>
+            </div>
+        </nav>
+
+        <div class="container centered">
+
+            <h1>Bienvenue sur l'intranet</h1>
+            <p>La plate-forme de l'entreprise</p>
+            <hr>
+            <h3>Avez-vous dit bonjour aujourd'hui à ...</h3>
+
+            <article class="user-card">
+                <figure>
+                    <img src="#" alt="Photo de John Doe">
+                </figure>
+                <div>
+                    <h1>John Doe</h1>
+                    <p>
+                        <i class="fa fa-envelope"></i>
+                        <a href="mailto:johndoe@email.com" title="Envoyer un email à John Doe johndoe@email.com">johndoe@email.com</a><br>
+                        
+                        <i class="fa fa-phone"></i>
+                        <a href="tel:0678901234" title="Téléphoner à John Doe (06 78 90 12 34)">06 78 90 12 34</a><br>
+                        
+                        <i class="fa fa-calendar"></i>
+                        04/11/1988 (30 ans)<br>
+                        
+                        <i class="fa fa-map-marker"></i>
+                        Paris, France
+                    </p>
+                    <a href="#" class="btn btn-small">Supprimer</a>
+                    <a href="#" class="btn btn-small">Modifier</a>
+                </div>
+            </article>
+
+            <div class="actions">
+                <a href="#" class="btn" @click.prevent="getRandomUser">
+                    <i class="fa fa-random" /> Dire bonjour à quelqu'un d'autre
+                </a>
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>
