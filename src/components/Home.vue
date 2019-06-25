@@ -17,33 +17,32 @@
 
 <script>
 import Usercard from "./Usercard";
+import UserService from "../services/UserService";
 
 export default {
-    name : 'Home',
-    data : function() {
-      return {
-        people : null,
-        person : null
-      }
-    },
-    components : {
-        Usercard
-    },
-    created(){
-      fetch('http://localhost:9000/collaborateurs')
-        .then(res => res.json())
-        .then(userlist => {
-          console.log('Listes des utilisateurs', userlist); // eslint-disable-line no-console
+  name: "Home",
+  data: function() {
+    return {
+      people: null,
+      person: null
+    };
+  },
+  components: {
+    Usercard
+  },
+  created() {
+    UserService.fetchAll().then(userlist => {
+      //console.log('Listes des utilisateurs', userlist); // eslint-disable-line no-console
 
-          this.people = userlist;
-          this.getRandomUser();
-        });
-    },
-    methods : {
-      getRandomUser : function(){
-        this.person = this.people[Math.floor(Math.random() * (this.people.length))];
-      }
+      this.people = userlist;
+      this.getRandomUser();
+    });
+  },
+  methods: {
+    getRandomUser: function() {
+      this.person = this.people[Math.floor(Math.random() * this.people.length)];
     }
+  }
 };
 </script>
 
