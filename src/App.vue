@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <!--<img alt="Vue logo" src="./assets/logo.png">-->
-    <navbar></navbar>
-    <home></home>
+    <navbar/>
+    <home/>
   </div>
 </template>
 
