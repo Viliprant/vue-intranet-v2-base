@@ -1,9 +1,9 @@
 <template>
     <nav class="navbar">
             <div class="container">
-                <a href="#">Accueil</a>
-                <a href="#">Liste des collaborateurs</a>
-                <a href="#">Ajouter un collaborateur</a>
+                <router-link to="/">Accueil</router-link>
+                <router-link to="users">Liste des collaborateurs</router-link>
+                <router-link to="blabla">Ajouter un collaborateur</router-link>
             </div>
         </nav>
 </template>
