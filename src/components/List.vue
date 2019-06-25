@@ -13,159 +13,33 @@
       </select>
     </form>
 
-    <div class="userlist">
-      <article class="user-card">
-        <figure>
-          <img src="#" alt="Photo de John Doe">
-        </figure>
-        <div>
-          <h1>John Doe</h1>
-          <p>
-            <i class="fa fa-envelope"></i>
-            <a
-              href="mailto:johndoe@email.com"
-              title="Envoyer un email à John Doe johndoe@email.com"
-            >johndoe@email.com</a>
-            <br>
-
-            <i class="fa fa-phone"></i>
-            <a href="tel:0678901234" title="Téléphoner à John Doe (06 78 90 12 34)">06 78 90 12 34</a>
-            <br>
-
-            <i class="fa fa-calendar"></i>
-            04/11/1988 (30 ans)
-            <br>
-
-            <i class="fa fa-map-marker"></i>
-            Paris, France
-          </p>
-          <a href="#" class="btn btn-small">Supprimer</a>
-          <a href="#" class="btn btn-small">Modifier</a>
-        </div>
-      </article>
-      <article class="user-card">
-        <figure>
-          <img src="#" alt="Photo de John Doe">
-        </figure>
-        <div>
-          <h1>John Doe</h1>
-          <p>
-            <i class="fa fa-envelope"></i>
-            <a
-              href="mailto:johndoe@email.com"
-              title="Envoyer un email à John Doe johndoe@email.com"
-            >johndoe@email.com</a>
-            <br>
-
-            <i class="fa fa-phone"></i>
-            <a href="tel:0678901234" title="Téléphoner à John Doe (06 78 90 12 34)">06 78 90 12 34</a>
-            <br>
-
-            <i class="fa fa-calendar"></i>
-            04/11/1988 (30 ans)
-            <br>
-
-            <i class="fa fa-map-marker"></i>
-            Paris, France
-          </p>
-          <a href="#" class="btn btn-small">Supprimer</a>
-          <a href="#" class="btn btn-small">Modifier</a>
-        </div>
-      </article>
-      <article class="user-card">
-        <figure>
-          <img src="#" alt="Photo de John Doe">
-        </figure>
-        <div>
-          <h1>John Doe</h1>
-          <p>
-            <i class="fa fa-envelope"></i>
-            <a
-              href="mailto:johndoe@email.com"
-              title="Envoyer un email à John Doe johndoe@email.com"
-            >johndoe@email.com</a>
-            <br>
-
-            <i class="fa fa-phone"></i>
-            <a href="tel:0678901234" title="Téléphoner à John Doe (06 78 90 12 34)">06 78 90 12 34</a>
-            <br>
-
-            <i class="fa fa-calendar"></i>
-            04/11/1988 (30 ans)
-            <br>
-
-            <i class="fa fa-map-marker"></i>
-            Paris, France
-          </p>
-          <a href="#" class="btn btn-small">Supprimer</a>
-          <a href="#" class="btn btn-small">Modifier</a>
-        </div>
-      </article>
-      <article class="user-card">
-        <figure>
-          <img src="#" alt="Photo de John Doe">
-        </figure>
-        <div>
-          <h1>John Doe</h1>
-          <p>
-            <i class="fa fa-envelope"></i>
-            <a
-              href="mailto:johndoe@email.com"
-              title="Envoyer un email à John Doe johndoe@email.com"
-            >johndoe@email.com</a>
-            <br>
-
-            <i class="fa fa-phone"></i>
-            <a href="tel:0678901234" title="Téléphoner à John Doe (06 78 90 12 34)">06 78 90 12 34</a>
-            <br>
-
-            <i class="fa fa-calendar"></i>
-            04/11/1988 (30 ans)
-            <br>
-
-            <i class="fa fa-map-marker"></i>
-            Paris, France
-          </p>
-          <a href="#" class="btn btn-small">Supprimer</a>
-          <a href="#" class="btn btn-small">Modifier</a>
-        </div>
-      </article>
-      <article class="user-card">
-        <figure>
-          <img src="#" alt="Photo de John Doe">
-        </figure>
-        <div>
-          <h1>John Doe</h1>
-          <p>
-            <i class="fa fa-envelope"></i>
-            <a
-              href="mailto:johndoe@email.com"
-              title="Envoyer un email à John Doe johndoe@email.com"
-            >johndoe@email.com</a>
-            <br>
-
-            <i class="fa fa-phone"></i>
-            <a href="tel:0678901234" title="Téléphoner à John Doe (06 78 90 12 34)">06 78 90 12 34</a>
-            <br>
-
-            <i class="fa fa-calendar"></i>
-            04/11/1988 (30 ans)
-            <br>
-
-            <i class="fa fa-map-marker"></i>
-            Paris, France
-          </p>
-          <a href="#" class="btn btn-small">Supprimer</a>
-          <a href="#" class="btn btn-small">Modifier</a>
-        </div>
-      </article>
+    <div class="userlist" v-if="userList">
+      <Usercard :user="person" v-for="person in userList" :key="person.id"/>
     </div>
   </div>
 </template>
 
 <script>
+import Usercard from './Usercard';
+import UserService from '../services/UserService';
+
 export default {
-  name: "List"
+  name: "List",
+  components : {
+      Usercard
+  },
+  data : function() {
+      return {
+          userList: null
+      }
+  },
+  created : function(){
+      UserService
+        .fetchAll()
+        .then(userList => {
+            this.userList = userList;
+        })
+  }
 };
 </script>
 
