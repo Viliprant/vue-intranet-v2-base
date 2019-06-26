@@ -3,42 +3,68 @@
     <h1>Liste des utilisateurs</h1>
     <hr>
 
-    <form class="filterform">
-      <input type="search" placeholder="Tapez un nom ou un lieu ...">
+    <form class="filterform" @submit.prevent>
+      <input type="search" v-model="searchedUser" placeholder="Tapez un nom ou un lieu ...">
 
       <label for="filter">Filtrer par :</label>
-      <select name="filterBy">
+      <select name="filterBy" v-model="filterUser">
         <option value="name">Nom</option>
         <option value="localisation">Localisation</option>
       </select>
     </form>
 
     <div class="userlist" v-if="userList">
-      <Usercard :user="person" v-for="person in userList" :key="person.id"/>
+      <Usercard :user="person" v-for="person in filteredList" :key="person.id"/>
     </div>
   </div>
 </template>
 
 <script>
-import Usercard from './Usercard';
-import UserService from '../services/UserService';
+import Usercard from "./Usercard";
+import UserService from "../services/UserService";
 
 export default {
   name: "List",
-  components : {
-      Usercard
+  components: {
+    Usercard
   },
-  data : function() {
-      return {
-          userList: null
-      }
+  data: function() {
+    return {
+      userList: null,
+      searchedUser: "",
+      filterUser: "name"
+    };
   },
-  created : function(){
-      UserService
-        .fetchAll()
-        .then(userList => {
-            this.userList = userList;
-        })
+  computed: {
+    filteredList: function() {
+      return this.userList.filter(user => {
+        let fullname = user.firstname + " " + user.lastname;
+        let localisation = user.city + " " + user.country;
+        switch (this.filterUser) {
+          case "name":
+            return (
+              fullname
+                .toLowerCase()
+                .indexOf(this.searchedUser.toLowerCase()) !== -1
+            );
+
+          case "localisation":
+            return (
+              localisation
+                .toLowerCase()
+                .indexOf(this.searchedUser.toLowerCase()) !== -1
+            );
+
+          default:
+            return false;
+        }
+      });
+    }
+  },
+  created: function() {
+    UserService.fetchAll().then(userList => {
+      this.userList = userList;
+    });
   }
 };
 </script>

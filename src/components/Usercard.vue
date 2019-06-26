@@ -25,7 +25,7 @@
         <br>
 
         <i class="fa fa-map-marker"></i>
-        {{user.country}}
+        {{`${user.city}, ${user.country}`}}
       </p>
       <a href="#" class="btn btn-small">Supprimer</a>
       <a href="#" class="btn btn-small">Modifier</a>
