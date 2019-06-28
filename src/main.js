@@ -4,11 +4,14 @@ import VueRouter from 'vue-router';
 import router from './router';
 import Vuelidate from 'vuelidate';
 import Toasted from 'vue-toasted';
+import Material from 'material-icons';
 
 Vue.use(VueRouter);
 Vue.use(Vuelidate);
 Vue.use(Toasted,{
-  duration: 5000
+  iconPack : Material,
+  duration: 5000,
+  closeButton : true
 })
 
 Vue.config.productionTip = false

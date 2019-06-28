@@ -9,7 +9,6 @@
 <script>
 import Form from "./Form";
 import UserService from "../services/UserService";
-import Vue from 'vue';
 
 export default {
   name: "Add",
@@ -22,7 +21,7 @@ export default {
       UserService.addUser(user).then(() => {
           // Redirige le visiteur vers la page de listing
           this.$router.replace("/users");
-      }).catch(errorMessage =>Vue.toasted.error(errorMessage.message));
+      }).catch(errorMessage =>this.$toasted.error(errorMessage.message));
     }
   }
 };

@@ -27,7 +27,6 @@
 <script>
 import Usercard from "./Usercard";
 import UserService from "../services/UserService";
-import Vue from 'vue';
 
 export default {
   name: "List",
@@ -70,7 +69,7 @@ export default {
   created: function() {
     UserService.fetchAll().then(userList => {
       this.userList = userList;
-    }).catch(errorMessage => Vue.toasted.error(errorMessage.message));
+    }).catch(errorMessage => this.$toasted.error(errorMessage.message));
   },
   methods: {
     removeUser: function(userToDelete) {
@@ -81,7 +80,7 @@ export default {
             this.userList.splice(index, 1);
           }
         })
-        .catch(errorMessage => Vue.toasted.error(errorMessage.message));
+        .catch(errorMessage => this.$toasted.error(errorMessage.message));
     }
   }
 };

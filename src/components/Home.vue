@@ -18,7 +18,6 @@
 <script>
 import Usercard from "./Usercard";
 import UserService from "../services/UserService";
-import Vue from 'vue';
 
 export default {
   name: "Home",
@@ -39,7 +38,7 @@ export default {
         this.people = userlist;
         this.getRandomUser();
       })
-      .catch(errorMessage => Vue.toasted.error(errorMessage.message));
+      .catch(errorMessage => this.$toasted.error(errorMessage.message));
   },
   methods: {
     getRandomUser: function() {
@@ -48,14 +47,14 @@ export default {
     removeUser: function(userToDelete) {
       UserService.removeUser(userToDelete)
         .then(() => {
-          let index = this.people.indexOf(userToDelete);
+          let index = this.people.indexOf(userToDelete,{icon:"bug_report"});
           if (index > -1) {
             this.people.splice(index, 1);
           }
 
           this.getRandomUser();
         })
-        .catch(errorMessage => Vue.toasted.error(errorMessage.message));
+        .catch(errorMessage => this.$toasted.error(errorMessage.message,{icon:"bug_report"}));
     }
   }
 };

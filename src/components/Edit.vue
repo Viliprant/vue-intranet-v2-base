@@ -9,7 +9,6 @@
 <script>
 import Form from "./Form";
 import UserService from "../services/UserService";
-import Vue from 'vue';
 
 export default {
   name: "Edit",
