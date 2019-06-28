@@ -150,7 +150,7 @@ module.exports = [
     "lastname": "Da silva",
     "email": "cassandre.dasilva@example.com",
     "phone": "01-28-66-34-97",
-    "birthdate": "1989-01-8",
+    "birthdate": "1989-01-08",
     "city": "Tourcoing",
     "country": "France",
     "photo": "https://randomuser.me/api/portraits/women/47.jpg"
@@ -186,7 +186,7 @@ module.exports = [
     "lastname": "Blanchard",
     "email": "robin.blanchard@example.com",
     "phone": "05-24-92-17-03",
-    "birthdate": "1985-10-1",
+    "birthdate": "1985-10-01",
     "city": "Pau",
     "country": "France",
     "photo": "https://randomuser.me/api/portraits/men/82.jpg"
@@ -234,7 +234,7 @@ module.exports = [
     "lastname": "Schmitt",
     "email": "margaux.schmitt@example.com",
     "phone": "02-77-77-49-54",
-    "birthdate": "1993-02-7",
+    "birthdate": "1993-02-07",
     "city": "Tours",
     "country": "France",
     "photo": "https://randomuser.me/api/portraits/women/23.jpg"
@@ -282,7 +282,7 @@ module.exports = [
     "lastname": "Garcia",
     "email": "maëly.garcia@example.com",
     "phone": "01-40-76-21-97",
-    "birthdate": "1993-08-5",
+    "birthdate": "1993-08-05",
     "city": "Brest",
     "country": "France",
     "photo": "https://randomuser.me/api/portraits/women/66.jpg"
@@ -306,7 +306,7 @@ module.exports = [
     "lastname": "Menard",
     "email": "dorian.menard@example.com",
     "phone": "01-14-12-08-49",
-    "birthdate": "1988-07-7",
+    "birthdate": "1988-07-07",
     "city": "Metz",
     "country": "France",
     "photo": "https://randomuser.me/api/portraits/men/18.jpg"
@@ -354,7 +354,7 @@ module.exports = [
     "lastname": "Riviere",
     "email": "mathéo.riviere@example.com",
     "phone": "03-06-93-38-01",
-    "birthdate": "1993-01-6",
+    "birthdate": "1993-01-06",
     "city": "Toulon",
     "country": "France",
     "photo": "https://randomuser.me/api/portraits/men/33.jpg"
@@ -366,7 +366,7 @@ module.exports = [
     "lastname": "Riviere",
     "email": "antonin.riviere@example.com",
     "phone": "02-63-61-35-05",
-    "birthdate": "1993-09-4",
+    "birthdate": "1993-09-04",
     "city": "Fort-de-france",
     "country": "France",
     "photo": "https://randomuser.me/api/portraits/men/56.jpg"
@@ -378,7 +378,7 @@ module.exports = [
     "lastname": "Arnaud",
     "email": "julia.arnaud@example.com",
     "phone": "03-45-30-62-34",
-    "birthdate": "1988-07-4",
+    "birthdate": "1988-07-04",
     "city": "Rennes",
     "country": "France",
     "photo": "https://randomuser.me/api/portraits/women/4.jpg"
@@ -390,7 +390,7 @@ module.exports = [
     "lastname": "Rodriguez",
     "email": "norah.rodriguez@example.com",
     "phone": "01-09-66-07-18",
-    "birthdate": "1985-02-5",
+    "birthdate": "1985-02-05",
     "city": "Le mans",
     "country": "France",
     "photo": "https://randomuser.me/api/portraits/women/74.jpg"
@@ -402,7 +402,7 @@ module.exports = [
     "lastname": "Leroy",
     "email": "oscar.leroy@example.com",
     "phone": "02-81-91-49-32",
-    "birthdate": "1982-12-3",
+    "birthdate": "1982-12-03",
     "city": "Marseille",
     "country": "France",
     "photo": "https://randomuser.me/api/portraits/men/99.jpg"
@@ -498,7 +498,7 @@ module.exports = [
     "lastname": "Perez",
     "email": "norah.perez@example.com",
     "phone": "01-42-18-21-91",
-    "birthdate": "1992-03-5",
+    "birthdate": "1992-03-05",
     "city": "Lyon",
     "country": "France",
     "photo": "https://randomuser.me/api/portraits/women/96.jpg"

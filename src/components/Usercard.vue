@@ -28,7 +28,7 @@
         {{`${user.city}, ${user.country}`}}
       </p>
       <a href="#" class="btn btn-small" @click.prevent="onRemove">Supprimer</a>
-      <a href="#" class="btn btn-small">Modifier</a>
+      <router-link class="btn btn-small" :to="`/edit/${user.id}`">Modifier</router-link>
     </div>
   </article>
 </template>

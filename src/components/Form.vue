@@ -1,5 +1,5 @@
 <template>
-  <form class="userform" @submit.prevent="onSubmit">
+  <form class="userform" @submit.prevent="send">
     <div class="form-group">
       <input type="radio" name="gender" v-model="user.gender" id="male" value="male">
       <label for="male">Homme</label>
@@ -124,7 +124,6 @@
 
 <script>
 import { required, alpha, email, url } from "vuelidate/lib/validators";
-import UserService from "../services/UserService";
 
 const phoneFR = value => /^0[0-9]-([0-9]{2}-){3}[0-9]{2}$/g.test(value);
 
@@ -166,20 +165,16 @@ export default {
   },
 
   methods: {
-    onSubmit: function() {
+    send: function() {
       // Si les règles de l'objet 'user' sont invalides, on stoppe l'exécution de la fonction
-      if (this.$v.user.$invalid) return this.$v.user.$touch();
-
-      // Le formulaire est valide, on prépare donc l'envoi des données au serveur
-      UserService.addUser(this.user).then(res => {
-        if (res.success) {
-          // Redirige le visiteur vers la page de listing
-          this.$router.replace("/users");
-        } else if (res.error) {
-        // eslint-disable-next-line
-          console.error(res.message);
-        }
-      });
+      if (this.$v.user.$invalid) 
+      {
+        return this.$v.user.$touch();
+      }
+      else
+      {
+        this.$emit("request", this.user); // Envoi l'objet 'user' vers le parent via l'événement personnalisé 'remove'
+      }
     }
   }
 };

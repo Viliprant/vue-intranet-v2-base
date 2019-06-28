@@ -24,7 +24,7 @@ module.exports = {
     if (collaborateur) {
       res.json(collaborateur)
     } else {
-      res.json({
+      res.status(404).json({
         error: 1,
         message: 'Collaborateur non trouvé'
       })
@@ -38,33 +38,33 @@ module.exports = {
   create: (req, res) => {
 
     if (!req.body.gender || (req.body.gender !== 'male' && req.body.gender !== 'female'))
-      return res.json({ error: 1, message: `Field 'gender' must be present and equal to 'male' or 'female'` });
+      return res.status(400).json({ error: 1, message: `Field 'gender' must be present and equal to 'male' or 'female'` });
 
     if (!req.body.firstname)
-      return res.json({ error: 1, message: `Field 'firstname' must be present` });
+      return res.status(400).json({ error: 1, message: `Field 'firstname' must be present` });
 
     if (!req.body.lastname)
-      return res.json({ error: 1, message: `Field 'lastname' must be present` });
+      return res.status(400).json({ error: 1, message: `Field 'lastname' must be present` });
 
     if (!req.body.email)
-      return res.json({ error: 1, message: `Field 'email' must be present` });
+      return res.status(400).json({ error: 1, message: `Field 'email' must be present` });
     else if (!emailRegExp.test(req.body.email))
       return res.json({ error: 1, message: `Field 'email' must be a valid RFC email` });
 
     if (!req.body.phone)
-      return res.json({ error: 1, message: `Field 'phone' must be present` });
+      return res.status(400).json({ error: 1, message: `Field 'phone' must be present` });
 
     if (!req.body.birthdate)
-      return res.json({ error: 1, message: `Field 'birthdate' must be present` });
+      return res.status(400).json({ error: 1, message: `Field 'birthdate' must be present` });
 
     if (!req.body.city)
-      return res.json({ error: 1, message: `Field 'city' must be present` });
+      return res.status(400).json({ error: 1, message: `Field 'city' must be present` });
 
     if (!req.body.country)
-      return res.json({ error: 1, message: `Field 'country' must be present` });
+      return res.status(400).json({ error: 1, message: `Field 'country' must be present` });
 
     if (req.body.photo && !req.body.photo.startsWith('http'))
-      return res.json({ error: 1, message: `Field 'photo' must be a valid URL` });
+      return res.status(400).json({ error: 1, message: `Field 'photo' must be a valid URL` });
 
 
     const nouveauCollaborateur = {
@@ -98,21 +98,21 @@ module.exports = {
     const collaborateur = COLLABORATEURS.find(c => c.id == req.params.id);
 
     if (!collaborateur) {
-      return res.json({
+      return res.status(404).json({
         error: 1,
         message: 'Collaborateur non trouvé'
       })
     }
 
     if (req.body.gender && req.body.gender !== 'male' && req.body.gender !== 'female')
-      return res.json({ error: 1, message: `Field 'gender' must be present and equal to 'male' or 'female'` });
+      return res.status(400).json({ error: 1, message: `Field 'gender' must be present and equal to 'male' or 'female'` });
 
     collaborateur.gender    = req.body.gender || collaborateur.gender
     collaborateur.firstname = req.body.firstname || collaborateur.firstname
     collaborateur.lastname  = req.body.lastname || collaborateur.lastname
 
     if (req.body.email && !emailRegExp.test(req.body.email))
-      return res.json({ error: 1, message: `Field 'email' must be a valid RFC email` });
+      return res.status(400).json({ error: 1, message: `Field 'email' must be a valid RFC email` });
 
     collaborateur.email     = req.body.email || collaborateur.email
     collaborateur.phone     = req.body.phone || collaborateur.phone
@@ -121,7 +121,7 @@ module.exports = {
     collaborateur.country   = req.body.country || collaborateur.country
 
     if (req.body.photo && !req.body.photo.startsWith('http'))
-      return res.json({ error: 1, message: `Field 'photo' must be a valid URL` });
+      return res.status(400).json({ error: 1, message: `Field 'photo' must be a valid URL` });
 
     collaborateur.photo     = req.body.photo || collaborateur.photo
 
@@ -141,7 +141,7 @@ module.exports = {
 
     let index = COLLABORATEURS.findIndex(c => c.id == req.params.id)
     if (index === -1) {
-      res.json({
+      res.status(404).json({
         error: 1,
         message: 'Collaborateur non trouvé'
       })

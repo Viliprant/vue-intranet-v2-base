@@ -18,6 +18,7 @@
 <script>
 import Usercard from "./Usercard";
 import UserService from "../services/UserService";
+import Vue from 'vue';
 
 export default {
   name: "Home",
@@ -31,29 +32,31 @@ export default {
     Usercard
   },
   created() {
-    UserService.fetchAll().then(userlist => {
-      //console.log('Listes des utilisateurs', userlist); // eslint-disable-line no-console
+    UserService.fetchAll()
+      .then(userlist => {
+        //console.log('Listes des utilisateurs', userlist); // eslint-disable-line no-console
 
-      this.people = userlist;
-      this.getRandomUser();
-    });
+        this.people = userlist;
+        this.getRandomUser();
+      })
+      .catch(errorMessage => Vue.toasted.error(errorMessage.message));
   },
   methods: {
     getRandomUser: function() {
       this.person = this.people[Math.floor(Math.random() * this.people.length)];
     },
     removeUser: function(userToDelete) {
-      UserService.removeUser(userToDelete).then(res => {
-        if (res.success) {
+      UserService.removeUser(userToDelete)
+        .then(() => {
           let index = this.people.indexOf(userToDelete);
           if (index > -1) {
             this.people.splice(index, 1);
           }
 
           this.getRandomUser();
-        }
-      });
-     }
+        })
+        .catch(errorMessage => Vue.toasted.error(errorMessage.message));
+    }
   }
 };
 </script>

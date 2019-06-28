@@ -14,7 +14,12 @@
     </form>
 
     <div class="userlist" v-if="userList">
-      <Usercard :user="person" v-for="person in filteredList" :key="person.id" @remove="removeUser"/>
+      <Usercard
+        :user="person"
+        v-for="person in filteredList"
+        :key="person.id"
+        @remove="removeUser"
+      />
     </div>
   </div>
 </template>
@@ -22,6 +27,7 @@
 <script>
 import Usercard from "./Usercard";
 import UserService from "../services/UserService";
+import Vue from 'vue';
 
 export default {
   name: "List",
@@ -64,18 +70,18 @@ export default {
   created: function() {
     UserService.fetchAll().then(userList => {
       this.userList = userList;
-    });
+    }).catch(errorMessage => Vue.toasted.error(errorMessage.message));
   },
-  methods : {
+  methods: {
     removeUser: function(userToDelete) {
-      UserService.removeUser(userToDelete).then(res => {
-        if (res.success) {
+      UserService.removeUser(userToDelete)
+        .then(() => {
           let index = this.userList.indexOf(userToDelete);
           if (index > -1) {
             this.userList.splice(index, 1);
           }
-        }
-      });
+        })
+        .catch(errorMessage => Vue.toasted.error(errorMessage.message));
     }
   }
 };
