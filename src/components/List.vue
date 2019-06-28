@@ -14,7 +14,7 @@
     </form>
 
     <div class="userlist" v-if="userList">
-      <Usercard :user="person" v-for="person in filteredList" :key="person.id"/>
+      <Usercard :user="person" v-for="person in filteredList" :key="person.id" @remove="removeUser"/>
     </div>
   </div>
 </template>
@@ -65,6 +65,18 @@ export default {
     UserService.fetchAll().then(userList => {
       this.userList = userList;
     });
+  },
+  methods : {
+    removeUser: function(userToDelete) {
+      UserService.removeUser(userToDelete).then(res => {
+        if (res.success) {
+          let index = this.userList.indexOf(userToDelete);
+          if (index > -1) {
+            this.userList.splice(index, 1);
+          }
+        }
+      });
+    }
   }
 };
 </script>

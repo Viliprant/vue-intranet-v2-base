@@ -3,7 +3,7 @@
             <div class="container">
                 <router-link to="/">Accueil</router-link>
                 <router-link to="users">Liste des collaborateurs</router-link>
-                <router-link to="blabla">Ajouter un collaborateur</router-link>
+                <router-link to="add">Ajouter un collaborateur</router-link>
             </div>
         </nav>
 </template>

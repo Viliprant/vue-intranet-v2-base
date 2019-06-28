@@ -5,7 +5,7 @@
     <hr>
     <h3>Avez-vous dit bonjour aujourd'hui à ...</h3>
 
-    <Usercard :user="person" v-if="person"/>
+    <Usercard :user="person" v-if="person" @remove="removeUser"/>
 
     <div class="actions">
       <a href="#" class="btn" @click.prevent="getRandomUser()">
@@ -41,7 +41,19 @@ export default {
   methods: {
     getRandomUser: function() {
       this.person = this.people[Math.floor(Math.random() * this.people.length)];
-    }
+    },
+    removeUser: function(userToDelete) {
+      UserService.removeUser(userToDelete).then(res => {
+        if (res.success) {
+          let index = this.people.indexOf(userToDelete);
+          if (index > -1) {
+            this.people.splice(index, 1);
+          }
+
+          this.getRandomUser();
+        }
+      });
+     }
   }
 };
 </script>
